@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='utf-8'?>
+<sdf version="1.10">
+  <model name="demo_tree">
+    <static>true</static>
+    <pose>0 0 0 0 0 0</pose>
+    <link name="body">
+      <visual name="trunk_visual">
+        <pose>0 0 1.4 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.21</radius>
+            <length>2.8</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.28 0.14 0.06 1</ambient>
+          <diffuse>0.28 0.14 0.06 1</diffuse>
+        </material>
+      </visual>
+      <collision name="trunk_collision">
+        <pose>0 0 1.4 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.21</radius>
+            <length>2.8</length>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name="crown_0_visual">
+        <pose>0 0 3.6 0 0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>1.25</radius>
+          </sphere>
+        </geometry>
+        <material>
+          <ambient>0.12 0.36 0.08 1</ambient>
+          <diffuse>0.12 0.36 0.08 1</diffuse>
+        </material>
+      </visual>
+      <collision name="crown_0_collision">
+        <pose>0 0 3.6 0 0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>1.25</radius>
+          </sphere>
+        </geometry>
+      </collision>
+      <visual name="crown_1_visual">
+        <pose>-0.6 0.2 3.0 0 0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.95</radius>
+          </sphere>
+        </geometry>
+        <material>
+          <ambient>0.12 0.36 0.08 1</ambient>
+          <diffuse>0.12 0.36 0.08 1</diffuse>
+        </material>
+      </visual>
+      <collision name="crown_1_collision">
+        <pose>-0.6 0.2 3.0 0 0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.95</radius>
+          </sphere>
+        </geometry>
+      </collision>
+      <visual name="crown_2_visual">
+        <pose>0.6 -0.3 3.1 0 0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>1.0</radius>
+          </sphere>
+        </geometry>
+        <material>
+          <ambient>0.12 0.36 0.08 1</ambient>
+          <diffuse>0.12 0.36 0.08 1</diffuse>
+        </material>
+      </visual>
+      <collision name="crown_2_collision">
+        <pose>0.6 -0.3 3.1 0 0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>1.0</radius>
+          </sphere>
+        </geometry>
+      </collision>
+      <visual name="crown_3_visual">
+        <pose>0 0.3 4.3 0 0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.85</radius>
+          </sphere>
+        </geometry>
+        <material>
+          <ambient>0.12 0.36 0.08 1</ambient>
+          <diffuse>0.12 0.36 0.08 1</diffuse>
+        </material>
+      </visual>
+      <collision name="crown_3_collision">
+        <pose>0 0.3 4.3 0 0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.85</radius>
+          </sphere>
+        </geometry>
+      </collision>
+    </link>
+  </model>
+</sdf>

@@ -1,0 +1,5 @@
+# Install into a venv with --system-site-packages so ROS cv_bridge remains available.
+ultralytics>=8.3,<9
+# Keep compatibility with the system ROS cv_bridge / NumPy ABI.
+numpy<2
+opencv-python<4.12
