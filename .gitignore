@@ -5,3 +5,4 @@ ros_ws/build/
 ros_ws/install/
 ros_ws/log/
 models/*.pt
+.vscode/
