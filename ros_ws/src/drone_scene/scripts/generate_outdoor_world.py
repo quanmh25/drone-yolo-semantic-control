@@ -106,7 +106,7 @@ def main():
     for name, builder in (('demo_sedan', sedan), ('demo_person', person), ('demo_tree', tree)):
         asset(name, builder)
     sdf = E.Element('sdf', version='1.10')
-    # Keep the existing world name so ros_gz_bridge.yaml also works with arena.sdf.
+    # Keep the world name consistent with the launch file and ROS-Gazebo bridge.
     world = tag(sdf, 'world', name='e2es_indoor')
     for system in ('Physics', 'UserCommands', 'SceneBroadcaster', 'Sensors'):
         filename = {'SceneBroadcaster': 'scene-broadcaster', 'UserCommands': 'user-commands'}.get(system, system.lower())

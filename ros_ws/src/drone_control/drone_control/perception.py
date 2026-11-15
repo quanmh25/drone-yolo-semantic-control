@@ -1,5 +1,6 @@
 """Synchronized RGB-D YOLO perception; publish real detections and debug images."""
 import json
+import math
 from pathlib import Path
 
 import cv2
@@ -22,6 +23,12 @@ class Perception(Node):
         for key, value in {'weights': '', 'confidence': 0.35,
                            'inference_hz': 5.0, 'device': 'cpu'}.items():
             self.declare_parameter(key, value)
+        rate = self.get_parameter('inference_hz').value
+        confidence = self.get_parameter('confidence').value
+        if not math.isfinite(rate) or rate <= 0:
+            raise ValueError('inference_hz must be finite and positive')
+        if not math.isfinite(confidence) or not 0 < confidence <= 1:
+            raise ValueError('confidence must be in (0, 1]')
         weights = Path(self.get_parameter('weights').value).expanduser()
         if not weights.is_file():
             raise RuntimeError('Set weights:=/absolute/path/to/yolov8n.pt; '
@@ -39,7 +46,7 @@ class Perception(Node):
         self.sync = ApproximateTimeSynchronizer(
             [self.rgb_sub, self.depth_sub], queue_size=5, slop=0.06)
         self.sync.registerCallback(self.receive)
-        self.create_timer(1.0 / self.get_parameter('inference_hz').value, self.infer)
+        self.create_timer(1.0 / rate, self.infer)
 
     def receive(self, rgb, depth):
         """Keep the newest synchronized pair instead of queuing old inference."""
