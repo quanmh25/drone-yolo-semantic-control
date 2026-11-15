@@ -55,18 +55,3 @@
   ros_type_name: "tf2_msgs/msg/TFMessage"
   gz_type_name: "gz.msgs.Pose_V"
   direction: GZ_TO_ROS
-
-
-# Right camera RGB image for visualization.
-- ros_topic_name: "/right_rgbd/image"
-  gz_topic_name: "/right_rgbd/image"
-  ros_type_name: "sensor_msgs/msg/Image"
-  gz_type_name: "gz.msgs.Image"
-  direction: GZ_TO_ROS
-
-# Side depth for continuous wall following (not an input to SLAM).
-- ros_topic_name: "/right_rgbd/depth_image"
-  gz_topic_name: "/right_rgbd/depth_image"
-  ros_type_name: "sensor_msgs/msg/Image"
-  gz_type_name: "gz.msgs.Image"
-  direction: GZ_TO_ROS

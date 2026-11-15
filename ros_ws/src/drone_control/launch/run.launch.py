@@ -18,7 +18,7 @@ def generate_launch_description():
         DeclareLaunchArgument('weights', description='Absolute path to local YOLO .pt weights'),
         DeclareLaunchArgument('world', default_value='semantic_outdoor.sdf'),
         DeclareLaunchArgument('gz_extra_args', default_value=''),
-        DeclareLaunchArgument('x', default_value='-7.0'),
+        DeclareLaunchArgument('x', default_value='-5.0'),
         DeclareLaunchArgument('y', default_value='1.5'),
         DeclareLaunchArgument('z', default_value='0.15'),
         IncludeLaunchDescription(

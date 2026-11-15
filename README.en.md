@@ -8,7 +8,7 @@ The drone takes off, moves forward, and stops based on the detected object class
 
 `Gazebo RGB-D camera → YOLO + depth estimation → semantic controller → velocity commands`
 
-- **drone_scene:** outdoor world, drone, cameras, and ROS–Gazebo bridges.
+- **drone_scene:** outdoor world, drone, front RGB-D camera, and ROS–Gazebo bridges.
 - **drone_control:** synchronized RGB/depth perception, automatic takeoff, forward motion, and latched stopping.
 - **Scene:** a road, crosswalk, sidewalks, parking area, three people, three cars, and five trees.
 
@@ -51,8 +51,10 @@ The setup script uses system site packages and pins NumPy/OpenCV for ROS `cv_bri
 bash ros_ws/src/drone_control/scripts/run_demo.sh
 
 # Car demo: close the previous demo with Ctrl+C before starting this one.
-bash ros_ws/src/drone_control/scripts/run_demo.sh x:=2.5
+bash ros_ws/src/drone_control/scripts/run_demo.sh x:=4.0 y:=-6.0
 ```
+
+The default spawn position is **`(-5, 1.5, 0.15)` m**, facing the person at `(0, 1.5)` m. The car demo spawns at `(4.0, -6.0, 0.15)` m, facing the parked car at `(7.5, -6)` m.
 
 The script sources ROS and the workspace, exposes the YOLO environment, and launches simulation, perception, and control. Stop with `Ctrl+C`; run one demo at a time.
 
@@ -66,7 +68,7 @@ export YOLO_CONFIG_DIR="$PWD/.venv/yolo-config"
 ros2 launch drone_control run.launch.py weights:="$PWD/models/yolov8n.pt"
 ```
 
-For the scene alone, after sourcing ROS and the workspace:
+For the scene alone, with the same default spawn position, source ROS and the workspace, then run:
 
 ```bash
 ros2 launch drone_scene sim.launch.py

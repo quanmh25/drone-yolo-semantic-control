@@ -21,7 +21,7 @@ def generate_launch_description():
                               description='World filename in drone_scene/worlds'),
         DeclareLaunchArgument('gz_extra_args', default_value='',
                               description='Extra Gazebo args, e.g. -s --headless-rendering'),
-        DeclareLaunchArgument('x', default_value='-11.0'),
+        DeclareLaunchArgument('x', default_value='-5.0'),
         DeclareLaunchArgument('y', default_value='1.5'),
         DeclareLaunchArgument('z', default_value='0.15'),
         SetEnvironmentVariable('GZ_SIM_RESOURCE_PATH', os.pathsep.join([

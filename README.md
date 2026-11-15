@@ -6,7 +6,7 @@ Mô phỏng drone trong ROS 2 Jazzy và Gazebo Harmonic, sử dụng camera RGB-
 
 | Thành phần                    | Nhiệm vụ                                                                   |
 | ----------------------------- | -------------------------------------------------------------------------- |
-| `drone_scene`                 | Mở world Gazebo, tạo drone, camera RGB-D và bridge ROS                     |
+| `drone_scene`                 | Mở world Gazebo, tạo drone, camera RGB-D phía trước và bridge ROS                     |
 | `semantic_perception`         | Đồng bộ RGB/depth, chạy YOLO, tính khoảng cách từ depth trong bounding box |
 | `semantic_controller`         | Tự cất cánh, bay tiến, giảm tốc và giữ dừng                                |
 | `drone_control/run.launch.py` | Chạy cả simulation, perception và controller                               |
@@ -122,7 +122,7 @@ export YOLO_CONFIG_DIR="$PWD/.venv/yolo-config"
 ros2 launch drone_control run.launch.py weights:="$PWD/models/yolov8n.pt"
 ```
 
-Lệnh mở Gazebo, camera, YOLO và controller. Drone spawn ở `(-7, 1.5, 0.15)` m, người trên vạch qua đường ở `(0, 1.5)` m. Theo dõi ảnh và trạng thái ở bước 7 để xác định YOLO có thực sự nhận diện người hay không.
+Lệnh mở Gazebo, camera, YOLO và controller. Drone spawn ở `(-5, 1.5, 0.15)` m, người trên vạch qua đường ở `(0, 1.5)` m. Theo dõi ảnh và trạng thái ở bước 7 để xác định YOLO có thực sự nhận diện người hay không.
 
 ### 6.3. Demo ô tô
 
@@ -130,10 +130,10 @@ Dừng phiên trước bằng `Ctrl+C`, chờ các process thoát rồi chạy:
 
 ```bash
 ros2 launch drone_control run.launch.py \
-  weights:="$PWD/models/yolov8n.pt" x:=2.5
+  weights:="$PWD/models/yolov8n.pt" x:=4.0 y:=-6.0
 ```
 
-Drone xuất phát sau vị trí người trên đường, hướng về xe ở `(7, 1.5)` m.
+Drone xuất phát ở `(4.0, -6.0, 0.15)` m, hướng về xe đỗ ở `(7.5, -6)` m.
 Không chạy hai simulation hoặc hai controller phát `/cmd_vel` cùng lúc.
 
 ### 6.4. Cách chạy ngắn bằng script
@@ -143,7 +143,7 @@ Sau khi đã cài đặt và build, script thiết lập môi trường rồi g�
 ```bash
 bash ros_ws/src/drone_control/scripts/run_demo.sh
 # Hoặc demo xe, sau khi đóng phiên trước:
-bash ros_ws/src/drone_control/scripts/run_demo.sh x:=2.5
+bash ros_ws/src/drone_control/scripts/run_demo.sh x:=4.0 y:=-6.0
 ```
 
 ## 7. Xem camera, nhận diện và trạng thái
@@ -209,14 +209,14 @@ Rosbag được lưu trong thư mục hiện tại; nhấn `Ctrl+C` để kết 
 ros2 launch drone_scene sim.launch.py
 ```
 
-Scene riêng mặc định spawn ở `(-11, 1.5, 0.15)` m, khác vị trí mặc định của demo đầy đủ.
+Scene riêng và demo đầy đủ đều mặc định spawn ở `(-5, 1.5, 0.15)` m.
 
 ### Mở scene trước, controller sau
 
 Terminal 1, sau khi source môi trường:
 
 ```bash
-ros2 launch drone_scene sim.launch.py x:=-7 y:=1.5 z:=0.15
+ros2 launch drone_scene sim.launch.py x:=-5 y:=1.5 z:=0.15
 ```
 
 Terminal 2, thực hiện thiết lập ở mục 6.1 rồi chạy:
@@ -226,13 +226,9 @@ ros2 launch drone_control run.launch.py \
   start_sim:=false weights:="$PWD/models/yolov8n.pt"
 ```
 
-### Mở world phòng kín cũ
+### Tùy chỉnh launch
 
-```bash
-ros2 launch drone_scene sim.launch.py world:=arena.sdf x:=0 y:=0 z:=1.2
-```
-
-Đây là lệnh mở scene riêng. Có thể truyền `world`, `x`, `y`, `z` và `gz_extra_args` cho launch đầy đủ khi cần. Chạy không giao diện bằng `gz_extra_args:='-s --headless-rendering'` vẫn cần môi trường hỗ trợ render camera.
+Có thể truyền `world`, `x`, `y`, `z` và `gz_extra_args` cho launch đầy đủ khi cần. Chạy không giao diện bằng `gz_extra_args:='-s --headless-rendering'` vẫn cần môi trường hỗ trợ render camera.
 
 ## 9. Cấu hình và bố trí cảnh
 
@@ -270,7 +266,7 @@ Generator bên dưới **ghi đè ba model và world ngoài trời**; sửa gene
 python3 ros_ws/src/drone_scene/scripts/generate_outdoor_world.py
 ```
 
-Tên world nội bộ vẫn là `e2es_indoor` để dùng chung bridge với phòng cũ.
+Tên world nội bộ là `e2es_indoor`, khớp với cấu hình spawn và bridge ROS–Gazebo.
 
 ## 10. Kiểm tra code
 
