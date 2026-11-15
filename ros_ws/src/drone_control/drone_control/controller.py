@@ -1,4 +1,3 @@
-"""Take off, approach semantic obstacles, and latch a class-dependent stop."""
 import json
 import math
 import time
@@ -14,12 +13,10 @@ from std_srvs.srv import Trigger
 
 
 class Controller(Node):
-    """Publish commands at 20 Hz independently of neural network inference."""
-
     def __init__(self):
         super().__init__('semantic_controller')
         defaults = {'takeoff_height': 1.1, 'cruise_speed': 0.25,
-                    'person_distance': 2.0, 'car_distance': 1.0,
+                    'person_distance': 2.0, 'car_distance': 1.1,
                     'stop_margin': 0.10, 'perception_timeout': 1.0,
                     'max_travel': 20.0}
         for key, value in defaults.items():

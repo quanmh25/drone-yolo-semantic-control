@@ -1,0 +1,79 @@
+{
+  "person": {
+    "states": [
+      "TAKEOFF",
+      "WAIT_PERCEPTION",
+      "CRUISE",
+      "APPROACH_person",
+      "STOP_person"
+    ],
+    "final": {
+      "state": "STOP_person",
+      "velocity_x": 0.0,
+      "velocity_z": 9.267981937455262e-11,
+      "stamp": 39.800000000000004,
+      "perception": {
+        "stamp": 39.5,
+        "objects": [
+          {
+            "class": "person",
+            "confidence": 0.8756009340286255,
+            "bbox": [
+              594.6686401367188,
+              79.91841888427734,
+              637.8124389648438,
+              184.68014526367188
+            ],
+            "distance_m": 6.5700771861823695,
+            "in_path": false
+          },
+          {
+            "class": "person",
+            "confidence": 0.5264224410057068,
+            "bbox": [
+              278.7418212890625,
+              0.3878326416015625,
+              330.5191650390625,
+              180.89483642578125
+            ],
+            "distance_m": 2.1981194705527076,
+            "in_path": true
+          }
+        ],
+        "obstacle_m": 2.4207803762489397
+      }
+    }
+  },
+  "car": {
+    "states": [
+      "TAKEOFF",
+      "CRUISE",
+      "APPROACH_car",
+      "STOP_car"
+    ],
+    "final": {
+      "state": "STOP_car",
+      "velocity_x": 0.0,
+      "velocity_z": 0.0013573427152545393,
+      "stamp": 8.65,
+      "perception": {
+        "stamp": 8.55,
+        "objects": [
+          {
+            "class": "car",
+            "confidence": 0.37833502888679504,
+            "bbox": [
+              78.551025390625,
+              49.149169921875,
+              636.8322143554688,
+              419.7915344238281
+            ],
+            "distance_m": 1.1277177616317542,
+            "in_path": true
+          }
+        ],
+        "obstacle_m": 1.3277723385351137
+      }
+    }
+  }
+}

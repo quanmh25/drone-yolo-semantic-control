@@ -10,7 +10,7 @@ semantic_controller:
     takeoff_height: 1.1
     cruise_speed: 0.25
     person_distance: 2.0
-    car_distance: 1.0
+    car_distance: 1.1
     stop_margin: 0.10
     perception_timeout: 1.0
     max_travel: 20.0

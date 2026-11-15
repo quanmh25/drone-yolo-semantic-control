@@ -3,7 +3,7 @@ set -eo pipefail
 repo_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../../../.." && pwd)"
 weights_path="$repo_dir/models/yolov8n.pt"
 if [[ ! -f "$weights_path" || ! -d "$repo_dir/.venv" ]]; then
-  echo 'Chạy bash ros_ws/src/drone_control/scripts/setup_yolo.sh trước.' >&2
+  echo 'Run bash ros_ws/src/drone_control/scripts/setup_yolo.sh first.' >&2
   exit 1
 fi
 source /opt/ros/jazzy/setup.bash

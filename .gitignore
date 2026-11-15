@@ -7,3 +7,17 @@ ros_ws/log/
 models/*.pt
 .vscode/
 log/
+
+# Local tools, caches, and credentials
+.agents/
+.codex/
+.aws/
+.env
+.env.*
+!.env.example
+.ruff_cache/
+.coverage
+htmlcov/
+*.py[cod]
+*.egg-info/
+.DS_Store

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate local, original primitive models; no network or mesh dependencies."""
+"""Generate the outdoor world and procedural trees using bundled scene assets."""
 from pathlib import Path
 import xml.etree.ElementTree as E
 
@@ -58,44 +58,6 @@ def asset(name, build):
     save(directory / 'model.config', config)
 
 
-DARK = '0.025 0.03 0.04 1'
-GLASS = '0.10 0.23 0.30 1'
-
-
-def sedan(link):
-    shape(link, 'body', 'box', '4.2 1.8 0.55', '0 0 0.65 0 0 0', '0.12 0.30 0.65 1')
-    shape(link, 'cabin', 'box', '2.15 1.60 0.65', '-0.15 0 1.18 0 0 0', GLASS)
-    shape(link, 'roof', 'box', '2.20 1.66 0.08', '-0.15 0 1.54 0 0 0', '0.10 0.25 0.55 1')
-    for x in (-1.30, 1.30):
-        for y in (-0.9, 0.9):
-            shape(link, f'wheel_{x}_{y}', 'cylinder', '0.34 0.23', f'{x} {y} 0.35 1.570796 0 0', DARK)
-            shape(link, f'hub_{x}_{y}', 'cylinder', '0.18 0.24', f'{x} {y} 0.35 1.570796 0 0', '0.6 0.62 0.65 1', False)
-    for y in (-0.59, 0.59):
-        shape(link, f'headlight_{y}', 'box', '0.04 0.38 0.20', f'2.12 {y} 0.72 0 0 0', '1 0.96 0.75 1', False)
-        shape(link, f'taillight_{y}', 'box', '0.04 0.38 0.18', f'-2.12 {y} 0.72 0 0 0', '0.8 0.03 0.02 1', False)
-    for y in (-0.815, 0.815):
-        for x in (-1.1, -0.15, 0.8):
-            shape(link, f'pillar_{x}_{y}', 'box', '0.08 0.04 0.63', f'{x} {y} 1.19 0 0 0', DARK, False)
-        shape(link, f'mirror_{y}', 'box', '0.25 0.16 0.16', f'0.6 {y * 1.2} 1.12 0 0 0', DARK, False)
-    shape(link, 'grille', 'box', '0.04 0.8 0.17', '2.13 0 0.52 0 0 0', DARK, False)
-    shape(link, 'plate', 'box', '0.05 0.42 0.12', '-2.13 0 0.51 0 0 0', '0.95 0.95 0.95 1', False)
-
-
-def person(link):
-    skin = '0.65 0.43 0.30 1'
-    shape(link, 'torso', 'box', '0.28 0.43 0.58', '0 0 1.12 0 0 0', '0.85 0.18 0.06 1')
-    shape(link, 'neck', 'cylinder', '0.065 0.12', '0 0 1.46 0 0 0', skin)
-    shape(link, 'head', 'sphere', '0.145', '0 0 1.65 0 0 0', skin)
-    shape(link, 'hair', 'sphere', '0.14', '-0.025 0 1.71 0 0 0', DARK, False)
-    shape(link, 'nose', 'sphere', '0.035', '0.14 0 1.65 0 0 0', skin, False)
-    for y in (-0.12, 0.12):
-        shape(link, f'leg_{y}', 'cylinder', '0.085 0.73', f'0 {y} 0.47 0 0 0', '0.07 0.12 0.22 1')
-        shape(link, f'shoe_{y}', 'box', '0.30 0.18 0.12', f'0.06 {y} 0.07 0 0 0', DARK)
-    for y in (-0.29, 0.29):
-        shape(link, f'arm_{y}', 'cylinder', '0.065 0.50', f'0 {y} 1.13 0 0 0', '0.85 0.18 0.06 1')
-        shape(link, f'hand_{y}', 'sphere', '0.07', f'0 {y} 0.84 0 0 0', skin)
-
-
 def tree(link):
     shape(link, 'trunk', 'cylinder', '0.21 2.8', '0 0 1.4 0 0 0', '0.28 0.14 0.06 1')
     for i, (x, y, z, r) in enumerate(((0, 0, 3.6, 1.25), (-0.6, 0.2, 3.0, 0.95), (0.6, -0.3, 3.1, 1.0), (0, 0.3, 4.3, 0.85))):
@@ -103,8 +65,7 @@ def tree(link):
 
 
 def main():
-    for name, builder in (('demo_sedan', sedan), ('demo_person', person), ('demo_tree', tree)):
-        asset(name, builder)
+    asset('demo_tree', tree)
     sdf = E.Element('sdf', version='1.10')
     # Keep the world name consistent with the launch file and ROS-Gazebo bridge.
     world = tag(sdf, 'world', name='e2es_indoor')
@@ -145,8 +106,8 @@ def main():
         shape(pad, f'H_leg_{y}', 'box', '1.1 0.13 0.01', f'-11 {y} 0.065 0 0 0', '1 1 1 1', False)
     shape(pad, 'H_bar', 'box', '0.13 0.9 0.01', '-11 1.5 0.065 0 0 0', '1 1 1 1', False)
     placements = {
-        'demo_sedan': [('car_road', '7 1.5 0.04 0 0 0'), ('car_park_1', '1.5 -6 0.04 0 0 1.570796'), ('car_park_2', '7.5 -6 0.04 0 0 1.570796')],
-        'demo_person': [('person_crossing', '0 1.5 0.055 0 0 3.141593'), ('person_sidewalk', '-5 4.2 0.16 0 0 -1.570796'), ('person_parking', '4.5 -4 0.04 0 0 1.570796')],
+        'hatchback': [('car_road', '7 1.5 0.04 0 0 0'), ('car_park_1', '1.5 -6 0.04 0 0 0.785398'), ('car_park_2', '7.5 -6 0.04 0 0 0.785398')],
+        'person_standing': [('person_crossing', '0 1.5 0.055 0 0 3.141593'), ('person_sidewalk', '-5 4.2 0.16 0 0 -1.570796'), ('person_parking', '4.5 -4 0.04 0 0 1.570796')],
         'demo_tree': [(f'tree_{i}', f'{x} {y} 0 0 0 0') for i, (x, y) in enumerate(((-10, 8), (-3, 8), (5, 8), (12, 8), (-10, -7)), 1)],
     }
     for asset_name, instances in placements.items():

@@ -1,0 +1,77 @@
+{
+  "repository": "https://github.com/osrf/gazebo_models",
+  "files": [
+    {
+      "path": "person_standing/model.config",
+      "sha": "2ddfc464e2ace46c37a25a4a2d9253f3337f7d66"
+    },
+    {
+      "path": "person_standing/model.sdf",
+      "sha": "4fce9ce7ac4e48ecbc32e812662123f81cb8052f"
+    },
+    {
+      "path": "hatchback/model.config",
+      "sha": "09f5e71ca67f911ab95182aa568ea710917d80de"
+    },
+    {
+      "path": "hatchback/model.sdf",
+      "sha": "db7d460633b43bf1c12d6a17af413b97f16443b1"
+    },
+    {
+      "path": "person_standing/materials/textures/eyebrow001.png",
+      "sha": "b881f60ac23238747c0e8ec94b7ab22eff5ababa"
+    },
+    {
+      "path": "person_standing/materials/textures/green_eye.png",
+      "sha": "e68426cfbf594d5e7aa2edf84228b691e03a888b"
+    },
+    {
+      "path": "person_standing/materials/textures/jeans01_normals.png",
+      "sha": "2da1eede334dba1fced20e9b2467cf4bd0a39730"
+    },
+    {
+      "path": "person_standing/materials/textures/jeans_basic_diffuse.png",
+      "sha": "559b6027e4c3fddfe4a6b5c889e1dc863a5f5315"
+    },
+    {
+      "path": "person_standing/materials/textures/male02_diffuse_black.png",
+      "sha": "c81a83e5d9c87a13791e4cdc1347a933cd43c05c"
+    },
+    {
+      "path": "person_standing/materials/textures/teeth.png",
+      "sha": "338b9e2c2fd123f5e88a3ff2b25ab3269c7c7cd8"
+    },
+    {
+      "path": "person_standing/materials/textures/tshirt02_normals.png",
+      "sha": "11af253acc4f0225147d049f55206bfb970c95d7"
+    },
+    {
+      "path": "person_standing/materials/textures/tshirt02_texture.png",
+      "sha": "6710e6de9f8005450c8ab9447f7f220c666c113b"
+    },
+    {
+      "path": "person_standing/materials/textures/young_lightskinned_male_diffuse.png",
+      "sha": "15df3828390455c2d8d5da7286c6516a31c331b9"
+    },
+    {
+      "path": "person_standing/meshes/standing.dae",
+      "sha": "1cc0576f4a1e560631b5a5c1fa348e8f633c688e"
+    },
+    {
+      "path": "hatchback/materials/textures/hatchback.png",
+      "sha": "bb1cf4549afadec022baa04550e1551ff3000c7c"
+    },
+    {
+      "path": "hatchback/materials/textures/wheels3.png",
+      "sha": "d866f5aec4834bbb3d51ebb9a8efe4772b9534b4"
+    },
+    {
+      "path": "hatchback/meshes/hatchback.mtl",
+      "sha": "ff59bbb1158aa20d8df35410a6080db9660edd96"
+    },
+    {
+      "path": "hatchback/meshes/hatchback.obj",
+      "sha": "35cb05429ccfbd72c37f9100b58834f8ecdbadc5"
+    }
+  ]
+}

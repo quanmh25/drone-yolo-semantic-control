@@ -419,32 +419,32 @@
       </link>
     </model>
     <include>
-      <uri>model://demo_sedan</uri>
+      <uri>model://hatchback</uri>
       <name>car_road</name>
       <pose>7 1.5 0.04 0 0 0</pose>
     </include>
     <include>
-      <uri>model://demo_sedan</uri>
+      <uri>model://hatchback</uri>
       <name>car_park_1</name>
-      <pose>1.5 -6 0.04 0 0 1.570796</pose>
+      <pose>1.5 -6 0.04 0 0 0.785398</pose>
     </include>
     <include>
-      <uri>model://demo_sedan</uri>
+      <uri>model://hatchback</uri>
       <name>car_park_2</name>
-      <pose>7.5 -6 0.04 0 0 1.570796</pose>
+      <pose>7.5 -6 0.04 0 0 0.785398</pose>
     </include>
     <include>
-      <uri>model://demo_person</uri>
+      <uri>model://person_standing</uri>
       <name>person_crossing</name>
       <pose>0 1.5 0.055 0 0 3.141593</pose>
     </include>
     <include>
-      <uri>model://demo_person</uri>
+      <uri>model://person_standing</uri>
       <name>person_sidewalk</name>
       <pose>-5 4.2 0.16 0 0 -1.570796</pose>
     </include>
     <include>
-      <uri>model://demo_person</uri>
+      <uri>model://person_standing</uri>
       <name>person_parking</name>
       <pose>4.5 -4 0.04 0 0 1.570796</pose>
     </include>
